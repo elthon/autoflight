@@ -1,0 +1,15 @@
+SECONDARY_FLASH += \
+autoflight.bin \
+autoflight.map \
+
+autoflight.bin: autoflight.elf
+	@echo 'Invoking: GNU ARM Cross Create Flash Image'
+	arm-none-eabi-objcopy -O binary "autoflight.elf"  "autoflight.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+st-flash: autoflight.bin
+	@echo 'Invoking: ST-Flash'
+	/usr/local/bin/st-flash --reset write $< 0x08000000
+	@echo 'Finished falsh: $@'
+	@echo ' '

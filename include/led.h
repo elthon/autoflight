@@ -37,7 +37,7 @@
 
 #define BLINK_PORT_NUMBER               (4)
 #define BLINK_PIN_NUMBER                (1)
-#define BLINK_ACTIVE_LOW                (0)
+#define BLINK_ACTIVE_LOW                (1)
 
 
 #define BLINK_GPIOx(_N)                 ((GPIO_TypeDef *)(GPIOA_BASE + (GPIOB_BASE-GPIOA_BASE)*(_N)))

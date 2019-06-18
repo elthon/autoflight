@@ -86,6 +86,8 @@ main(int argc, char* argv[])
 
   blink_led_init();
   
+  blink_led_off();
+
   init_mpu();
 
   MX_USB_DEVICE_Init();
@@ -104,10 +106,10 @@ main(int argc, char* argv[])
       uint16_t yGyro = getGyroValue('Y');
       uint16_t zGyro = getGyroValue('Z');
 
-//      uint8_t send[2] = {0x63, 0x64};
-//
-//
-//      CDC_Transmit_FS(send,2);
+      uint8_t send[2] = {0x63, 0x64};
+
+
+      CDC_Transmit_FS(send,2);
 
       if((count++ % 50) == 0)
     	  trace_printf("xAcc = %d, yAcc= %d, zAcc = %d\t xGyro = %d, yGyro= %d, zGyro = %d\n",  xAcc, yAcc, zAcc, xGyro, yGyro, zGyro);
