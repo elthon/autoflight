@@ -43,9 +43,27 @@
 
 #define MPU6050_ADDRESS 0xD0//0x68
 
+typedef struct{
 
+	int16_t x;
+	int16_t y;
+	int16_t z;
 
+} RAW_DATA;
 
+extern RAW_DATA raw_acc;
+extern RAW_DATA raw_gyro;
+
+extern RAW_DATA filter_acc;
+extern RAW_DATA filter_gyro;
+
+extern float angle_pitch;
+extern float angle_roll;
+extern float angle_yaw;
+extern float angle_pitch_acc;
+extern float angle_roll_acc;
+
+void mpu_fetchdata();
 void init_mpu();
 int16_t getAccelValue(char axis);
 int16_t getGyroValue(char axis);
